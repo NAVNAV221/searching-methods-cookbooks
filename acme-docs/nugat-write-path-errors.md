@@ -1,7 +1,7 @@
 # Nugat — Write Path Errors
 
 > **Component:** Nugat
-> **Role:** Core memory-write engine for Makani
+> **Role:** Core memory-write engine for Acme
 > **Owner:** core-team
 > **Depends on:** Sapir
 > **Status:** current
@@ -14,7 +14,7 @@ memory-tuning guide instead.
 
 | Log Name                  | Reason                                          | Fix                                        |
 | ------------------------- | ----------------------------------------------- | ------------------------------------------ |
-| `NUGAT_FLUSH_FAILED`      | A buffer flush did not reach durable storage    | Check `makani.db.host` reachability        |
+| `NUGAT_FLUSH_FAILED`      | A buffer flush did not reach durable storage    | Check `acme.db.host` reachability        |
 | `NUGAT_BUFFER_PRESSURE`   | Buffer above the compaction threshold           | Warning only; tune buffer if sustained     |
 | `NUGAT_REPLICA_DIVERGED`  | Primary and replica disagree on the write log   | Stop writes and page core-team             |
 | `NUGAT_WRITE_REJECTED`    | A write failed validation before buffering      | Caller bug; the payload is logged          |

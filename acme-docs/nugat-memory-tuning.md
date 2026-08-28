@@ -1,13 +1,13 @@
 # Nugat — Memory Buffer Configuration Guide
 
 > **Component:** Nugat
-> **Role:** Core memory-write engine for Makani
+> **Role:** Core memory-write engine for Acme
 > **Owner:** core-team
 > **Depends on:** Sapir
 > **Status:** current
 > **Last updated:** 2026-05-02
 
-Nugat is the component that writes Makani's in-flight state to persistent
+Nugat is the component that writes Acme's in-flight state to persistent
 memory. Under heavy write load, the default buffer configuration can cause
 latency spikes, so this guide covers how to tune it.
 
@@ -30,5 +30,5 @@ latency spikes, so this guide covers how to tune it.
 
 Misconfiguring these values doesn't stop Nugat from starting — it degrades
 gracefully and logs `NUGAT_BUFFER_PRESSURE` warnings instead of failing
-outright. If Makani is failing to start entirely, the problem is almost
+outright. If Acme is failing to start entirely, the problem is almost
 always upstream in Sapir, not here.

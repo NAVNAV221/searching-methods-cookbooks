@@ -1,7 +1,7 @@
 # Sapir — Startup Sequence
 
 > **Component:** Sapir
-> **Role:** Startup configuration loader for Makani
+> **Role:** Startup configuration loader for Acme
 > **Owner:** platform-team
 > **Depends on:** —
 > **Status:** current
@@ -13,7 +13,7 @@ when a boot hangs rather than fails outright.
 ## The four phases
 
 1. **Discovery** — Sapir enumerates configuration sources in priority order:
-   `makani.config.yaml`, then process environment, then the remote config
+   `acme.config.yaml`, then process environment, then the remote config
    store. Sources are read, never merged silently; the first source with a
    value wins and the choice is logged.
 2. **Validation** — every discovered value is checked against the schema in
@@ -33,7 +33,7 @@ and you'll see `CONFIGURATION_SOURCE_UNREACHABLE` shortly after.
 
 ## Why Sapir fails fast
 
-Sapir deliberately refuses to start the rest of Makani in a half-configured
+Sapir deliberately refuses to start the rest of Acme in a half-configured
 state. A partially configured Nugat will accept writes it cannot durably
 flush, which is far more expensive to recover from than a clean startup
 failure. The tradeoff is that any configuration problem is a total outage.

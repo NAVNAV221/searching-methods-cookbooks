@@ -12,7 +12,7 @@ A four-hour total outage caused by one unset environment variable.
 ## Summary
 
 At 02:14 UTC a routine deploy shipped a Sapir release that added a new
-required key, `makani.db.replica_host`. The key was set in staging and never
+required key, `acme.db.replica_host`. The key was set in staging and never
 added to production. Sapir logged `CONFIGURATION_IS_MISSING` and refused to
 publish configuration. Kesh, Nugat, Vello, Lomi and Tuki never started.
 

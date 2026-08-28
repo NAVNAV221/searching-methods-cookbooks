@@ -1,4 +1,4 @@
-"""Shared plumbing for the Makani retrieval notebooks.
+"""Shared plumbing for the Acme retrieval notebooks.
 
 Corpus loading, section splitting, tokenization and BM25 live here so each
 notebook can stay short and show only the method it's actually about.
@@ -11,7 +11,7 @@ from pathlib import Path
 from langchain_text_splitters import MarkdownHeaderTextSplitter, RecursiveCharacterTextSplitter
 from rank_bm25 import BM25Okapi
 
-DOCS_DIR = Path("makani-docs")
+DOCS_DIR = Path("acme-docs")
 
 Chunk = namedtuple("Chunk", "filename heading text meta")
 
@@ -36,8 +36,8 @@ def render(chunk):
     """How a retrieved chunk is handed to the LLM: provenance header, then body.
 
     Dates stay structured attributes on the chunk and are rendered here, at prompt
-    time -- they are never folded into the indexed text. That's how etesian does it
-    (server/search/llm/context_render.py renders `- Created:` / `- Updated:`
+    time -- they are never folded into the indexed text. That's the pattern
+    (the context block renders `- Created:` / `- Updated:`
     into the context block, while the chunk bytes on disk stay pure body text), and it
     keeps two things separate that are easy to confuse: what the ranking function can
     see, and what the model can see.
@@ -98,7 +98,7 @@ def tokenize(text):
     # letters and digits as separate classes: also strips trailing punctuation
     # and splits on _ - . : / since none of those are in either class
     words = re.findall(r'[a-z]+|[0-9]+', CAMEL_BOUNDARY.sub(' ', text).lower())
-    # drop bare numbers and single chars (the "s" left by "Makani's")
+    # drop bare numbers and single chars (the "s" left by "Acme's")
     return exact + [w for w in words if len(w) > 1 and not w.isdigit()]
 
 
@@ -118,6 +118,6 @@ def api_key(name):
     """Keys come from the environment, falling back to a local .env file."""
     if name in os.environ:
         return os.environ[name]
-    env_file = Path(os.environ.get("MAKANI_ENV_FILE", ".env"))
+    env_file = Path(os.environ.get("ACME_ENV_FILE", ".env"))
     found = dict(re.findall(r'^([A-Z_]+)\s*=\s*"?([^"\n]+?)"?\s*$', env_file.read_text(), re.M))
     return found[name]

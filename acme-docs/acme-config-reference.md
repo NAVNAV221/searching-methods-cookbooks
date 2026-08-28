@@ -1,7 +1,7 @@
-# Makani — Configuration Key Reference
+# Acme — Configuration Key Reference
 
 > **Component:** Platform
-> **Role:** Canonical list of Makani configuration keys
+> **Role:** Canonical list of Acme configuration keys
 > **Owner:** platform-team
 > **Depends on:** —
 > **Status:** current
@@ -14,11 +14,11 @@ startup fails.
 
 | Key                          | Type   | Consumed by | Notes                                  |
 | ---------------------------- | ------ | ----------- | -------------------------------------- |
-| `makani.db.host`             | string | Nugat       | Primary write target                   |
-| `makani.db.replica_host`     | string | Nugat       | Added 2026-03; required since 2026-03  |
-| `makani.auth.issuer_url`     | string | Kesh        | Token issuer, must be HTTPS            |
-| `makani.gateway.public_port` | int    | Lomi        | Defaults blocked in production         |
-| `makani.telemetry.sink`      | string | Vello       | Set to `none` to disable, never unset  |
+| `acme.db.host`             | string | Nugat       | Primary write target                   |
+| `acme.db.replica_host`     | string | Nugat       | Added 2026-03; required since 2026-03  |
+| `acme.auth.issuer_url`     | string | Kesh        | Token issuer, must be HTTPS            |
+| `acme.gateway.public_port` | int    | Lomi        | Defaults blocked in production         |
+| `acme.telemetry.sink`      | string | Vello       | Set to `none` to disable, never unset  |
 
 ## Optional keys
 
@@ -31,10 +31,10 @@ startup fails.
 
 ## Resolution order
 
-Sapir resolves each key from `makani.config.yaml` first, then the process
-environment (uppercased and prefixed, so `makani.db.host` becomes
-`MAKANI_DB_HOST`), then the remote config store. A key that resolves from
-none of the three produces `CONFIGURATION_IS_MISSING` and Makani will not
+Sapir resolves each key from `acme.config.yaml` first, then the process
+environment (uppercased and prefixed, so `acme.db.host` becomes
+`ACME_DB_HOST`), then the remote config store. A key that resolves from
+none of the three produces `CONFIGURATION_IS_MISSING` and Acme will not
 start.
 
 ## Adding a required key

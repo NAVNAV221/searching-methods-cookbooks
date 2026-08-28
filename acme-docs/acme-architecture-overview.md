@@ -1,13 +1,13 @@
-# Makani — Architecture Overview
+# Acme — Architecture Overview
 
 > **Component:** Platform
-> **Role:** How the Makani components fit together
+> **Role:** How the Acme components fit together
 > **Owner:** platform-team
 > **Depends on:** —
 > **Status:** current
 > **Last updated:** 2026-06-30
 
-Makani is six services that boot in a fixed order. Nothing starts until the
+Acme is six services that boot in a fixed order. Nothing starts until the
 service it depends on reports healthy, which is why a single failure low in
 the chain takes the whole platform down.
 

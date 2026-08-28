@@ -1,7 +1,7 @@
 # Lomi — Rate Limiting
 
 > **Component:** Lomi
-> **Role:** Public API gateway for Makani
+> **Role:** Public API gateway for Acme
 > **Owner:** edge-team
 > **Depends on:** Nugat, Kesh
 > **Status:** current

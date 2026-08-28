@@ -1,26 +1,26 @@
 # Kesh — Authentication Errors
 
 > **Component:** Kesh
-> **Role:** Authentication and token issuance for Makani
+> **Role:** Authentication and token issuance for Acme
 > **Owner:** security-team
 > **Depends on:** Sapir
 > **Status:** current
 > **Last updated:** 2026-07-01
 
-Kesh issues and validates the tokens every other Makani component uses. It
+Kesh issues and validates the tokens every other Acme component uses. It
 starts immediately after Sapir publishes configuration.
 
 ## Error reference
 
 | Log Name                  | Reason                                            | Fix                                            |
 | ------------------------- | ------------------------------------------------- | ---------------------------------------------- |
-| `KESH_ISSUER_UNREACHABLE` | The configured token issuer did not respond       | Check `makani.auth.issuer_url` and egress rules |
+| `KESH_ISSUER_UNREACHABLE` | The configured token issuer did not respond       | Check `acme.auth.issuer_url` and egress rules |
 | `KESH_KEY_ROTATION_FAILED`| Signing key rotation did not complete             | Re-run rotation; old key stays valid 24h        |
 | `KESH_TOKEN_REJECTED`     | A presented token failed signature validation     | Usually clock skew — check NTP on the caller    |
 
 ## Kesh won't start
 
-Kesh has no configuration of its own. It reads `makani.auth.issuer_url` from
+Kesh has no configuration of its own. It reads `acme.auth.issuer_url` from
 the configuration Sapir publishes, so a Kesh that never starts is almost
 always a Sapir problem, not a Kesh problem. If Sapir logged a configuration
 error, fix that first and Kesh will come up on its own.

@@ -1,13 +1,13 @@
 # Tuki — Scheduler Errors
 
 > **Component:** Tuki
-> **Role:** Background job scheduler for Makani
+> **Role:** Background job scheduler for Acme
 > **Owner:** core-team
 > **Depends on:** Lomi
 > **Status:** current
 > **Last updated:** 2026-02-09
 
-Tuki runs recurring and deferred jobs. It is the last Makani component to
+Tuki runs recurring and deferred jobs. It is the last Acme component to
 boot and the first to complain.
 
 ## Error reference
@@ -20,7 +20,7 @@ boot and the first to complain.
 
 ## Why Tuki pages first
 
-Tuki's health check has the shortest timeout in Makani and Tuki boots last,
+Tuki's health check has the shortest timeout in Acme and Tuki boots last,
 so during any platform-wide startup failure Tuki is the component that wakes
 someone up. This is misleading almost every time. `TUKI_GATEWAY_UNREACHABLE`
 during a startup incident means the chain below Tuki has not finished coming
@@ -37,6 +37,6 @@ Parked jobs are never retried automatically.
 
 ## Impact when Tuki is down
 
-Nothing else in Makani depends on Tuki. Recurring work stops and backlogs,
+Nothing else in Acme depends on Tuki. Recurring work stops and backlogs,
 but no request path is affected, which is why Tuki alerts are downgraded to
 business hours during a known upstream incident.

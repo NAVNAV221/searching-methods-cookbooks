@@ -36,10 +36,10 @@ Highlights along the way:
 
 ## What's in here
 
-- **`makani-docs/`**: the demo corpus. 16 markdown docs (71 indexed sections) for
-  *Makani*, a fictional six-service platform. Includes architecture overviews,
+- **`acme-docs/`**: the demo corpus. 16 markdown docs (71 indexed sections) for
+  *Acme*, a fictional six-service platform. Includes architecture overviews,
   runbooks, error references, a postmortem, and (deliberately) two superseded docs.
-- **`makani.py`**: shared plumbing. Corpus loading, section splitting, metadata
+- **`acme.py`**: shared plumbing. Corpus loading, section splitting, metadata
   parsing, tokenization, BM25. Keeps each notebook focused on its own method.
 - **`embeddings.json`**: precomputed vectors so notebook 02 runs offline.
 - **`LECTURE_PLAN.md`**: the full narrative, results, and design notes per notebook.
@@ -55,3 +55,8 @@ jupyter lab
 Run the notebooks in order; each builds on the question the previous one couldn't
 answer. Notebooks 01 and 04 run fully offline; 02 and 03 call LLM APIs for answer
 generation (embeddings are cached, so 02's retrieval itself works offline too).
+
+> Note: `embeddings.json` was generated before the corpus was renamed, so most of its
+> cached vectors no longer match the current chunk text. Run the embedding cell in
+> `02_semantic_search.ipynb` once with `OPENAI_KEY` set to regenerate it (154 chunks,
+> `text-embedding-3-small`); after that, 02's retrieval is offline again.

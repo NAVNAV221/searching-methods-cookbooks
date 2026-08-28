@@ -1,13 +1,13 @@
 # Vello — Metrics Pipeline
 
 > **Component:** Vello
-> **Role:** Metrics and telemetry for Makani
+> **Role:** Metrics and telemetry for Acme
 > **Owner:** observability-team
 > **Depends on:** Nugat
 > **Status:** current
 > **Last updated:** 2026-05-20
 
-Vello collects metrics from every Makani component and ships them to the
+Vello collects metrics from every Acme component and ships them to the
 configured sink. It reads Nugat's write stream, so it starts after Nugat.
 
 ## Error reference
@@ -20,7 +20,7 @@ configured sink. It reads Nugat's write stream, so it starts after Nugat.
 
 ## Vello is a leaf
 
-Nothing in Makani depends on Vello. If Vello is down you lose visibility,
+Nothing in Acme depends on Vello. If Vello is down you lose visibility,
 not function — which is exactly when you most want it back, and also why
 Vello is never paged overnight. Metrics gaps during an incident are expected
 and are not themselves an incident.
